@@ -7,8 +7,8 @@ interface InputProps {
 
 export default function Input({ name, type='text', placeholder, required } : InputProps ) {
   return (
-    <div className="flex flex-col space-y-2">
-      <label className="text-md capitalize" htmlFor={name}>
+    <div className="flex flex-col space-y-6">
+      <label className="text-md capitalize text-foreground" htmlFor={name} aria-label={name}>
         {name}:
       </label>
       <input
@@ -16,7 +16,7 @@ export default function Input({ name, type='text', placeholder, required } : Inp
       type={type}
       placeholder={placeholder}
       required={required}
-      className="rounded-md px-4 py-2 bg-inherit border mb-6"
+      className="rounded-md px-4 py-2 bg-inherit border mb-6 text-foreground"
       />
     </div>
   )

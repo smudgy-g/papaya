@@ -8,11 +8,12 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
 }
 
+
 export default meta 
 type Story = StoryObj<typeof Button>
 
 export const Default:Story = {
   args: {
-    children: 'Click Me'
+    children: 'Click Me',
   }
 }

@@ -1,9 +1,17 @@
-import { GeistSans } from 'geist/font/sans'
+import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
+import { Inter as FontSans } from "next/font/google"
+import { cn } from "@/lib/utils"
+import { Toaster } from '@/components/ui/toaster'
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3000'
+
+  export const fontSans = FontSans({
+    subsets: ["latin"],
+    variable: "--font-sans",
+  })
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
@@ -17,12 +25,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="h-screen flex flex-col items-center">
-          {children}
-        </main>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}>
+            {children}
+            <Toaster />
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

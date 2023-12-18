@@ -12,9 +12,15 @@ export type FormElement = {
     label: string
   }
 
-  designerComponent: React.FC
-  formComponent: React.FC
-  propertiesComponent: React.FC
+  designerComponent: React.FC<{
+    elementInstance: FormElementInstance
+  }>
+  formComponent: React.FC<{
+    elementInstance: FormElementInstance
+  }>
+  propertiesComponent: React.FC<{
+    elementInstance: FormElementInstance
+  }>
 }
 
 export type FormElementInstance = {
@@ -30,8 +36,3 @@ type FormElementsType = {
 export const FormElements: FormElementsType = {
   TextField: TextFieldFormElement
 }
-// export default function FormElements() {
-//   return (
-
-//   )
-// }

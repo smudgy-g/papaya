@@ -3,6 +3,7 @@ import './globals.css'
 import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
 import { Toaster } from '@/components/ui/toaster'
+import DesignerContextProvider from '@/components/context/DesignerContext'
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -32,8 +33,10 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}>
+          <DesignerContextProvider>
             {children}
             <Toaster />
+          </DesignerContextProvider>
         </body>
       </html>
     </ClerkProvider>

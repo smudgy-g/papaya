@@ -39,7 +39,7 @@ export async function CreateForm(data: FormSchemaType) {
   const validation = formSchema.safeParse(data)
   if(!validation) throw new Error("Form not valid.")
 
-  const user = await currentUser()
+  const user = await currentUser ()
   if (!user) throw new UserNotFoundErr()
 
   const { name, description} = data
@@ -56,7 +56,7 @@ export async function CreateForm(data: FormSchemaType) {
   return form.id
 }
 
-export async function GetForms() {
+export async function GetForms () {
   const user = await currentUser()
   if (!user) throw new UserNotFoundErr()
 
@@ -70,7 +70,7 @@ export async function GetForms() {
   })
 }
 
-export async function GetFormById(id: number) {
+export async function GetFormById (id: number) {
   const user = await currentUser()
   if (!user) throw new UserNotFoundErr()
 
@@ -78,6 +78,21 @@ export async function GetFormById(id: number) {
     where: {
       userId: user.id,
       id
+    }
+  })
+}
+
+export async function UpdateFormContent (id: number, data: string) {
+  const user = await currentUser()
+  if (!user) throw new UserNotFoundErr()
+
+  return await prisma.form.update({
+    where: {
+      userId: user.id,
+      id
+    },
+    data: {
+      content: data
     }
   })
 }

@@ -6,7 +6,10 @@ import PublishFormButton from "./PublishFormButton"
 import Designer from "./Designer"
 import { DndContext, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core"
 import DragOverlayWrapper from "./DragOverlayWrapper"
+import { useEffect } from "react"
+import useDesigner from "@/lib/hooks/useDesigner"
 export default function FormBuilder({ form }: { form: Form }) {
+  const { setElements } = useDesigner()
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
       distance: 10
@@ -21,6 +24,10 @@ export default function FormBuilder({ form }: { form: Form }) {
   })
   const sensors = useSensors(mouseSensor, touchSensor)
 
+  useEffect(() => {
+    const elements = JSON.parse(form.content)
+    setElements(elements)
+  }, [form, setElements])
   return (
     <DndContext sensors={sensors}>
       <main className="flex flex-col w-full">
@@ -33,7 +40,7 @@ export default function FormBuilder({ form }: { form: Form }) {
             <PreviewDialogButton />
             {!form.published && (
               <>
-                <SaveFormButton />
+                <SaveFormButton id={form.id} />
                 <PublishFormButton />
               </>
             )}

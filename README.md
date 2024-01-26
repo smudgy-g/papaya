@@ -1,8 +1,7 @@
 # Papaya
+Please note that Papaya is stilll in development.
 
 ## Description
-
-Briefly describe your project here. Explain what it does, its main features, and why it is useful or unique. You can also mention the technologies or frameworks used in the project.
 
 Papaya is an dynamic event registration form builder. It will be integrated with AI to allow the user easy insight and feeback on the guest data for each event as well as some general statistics.
 
@@ -10,8 +9,6 @@ The project was boot-strapped wth Next.js and uses React DnD Kit for added user 
 
 
 ## Installation
-
-Provide step-by-step instructions on how to install and set up your project. Include any necessary dependencies and commands. You can also include screenshots or code snippets to help users understand the installation process.
 
 Follow these steps to set up and run the Papaya project on your local machine:
 
